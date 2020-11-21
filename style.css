@@ -1,0 +1,48 @@
+header {
+    color:white;
+    text-align:center;
+    font-size:1.5em;
+    padding:2%;
+}
+
+.row.header-row {
+    background-color:rgba(0,0,0,0.8);
+}
+
+body {
+    font-family:sans-serif;
+}
+
+.row.main-row {
+    width:95%;
+    margin:0px auto;
+}
+
+.forecastDay {
+    background-color:blue;
+    color:white;
+}
+
+.todayHeader img {
+    width:5%;
+}
+
+.forecastDay img {
+    width:15%;
+}
+
+#searchedCities {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+}
+
+#searchedCities li button {
+    width:100%;
+    padding:1%;
+}
+
+
+h1 {
+    margin:0px auto;
+}
