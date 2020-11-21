@@ -5,12 +5,22 @@ header {
     padding:2%;
 }
 
+
+h1 {
+    margin:0px auto;
+}
+
 .row.header-row {
     background-color:rgba(0,0,0,0.8);
 }
 
 body {
     font-family:sans-serif;
+}
+
+#error {
+    margin-top:5%;
+    font-size:0.75em;
 }
 
 .row.main-row {
@@ -25,11 +35,10 @@ body {
 
 .todayHeader img {
     width:5%;
+    vertical-align: top;
 }
 
-.forecastDay img {
-    width:15%;
-}
+
 
 #searchedCities {
     list-style-type: none;
@@ -37,12 +46,70 @@ body {
     padding:0;
 }
 
-#searchedCities li button {
+.weather-information {
+    visibility:hidden;
+    padding-left:5%;
+}
+
+aside {
+    background-color:rgba(211,211,211, 0.5);
+    padding:2%;
+}
+
+aside #searchBtn {
+    background-color:blue;
+    border-color:blue;
+    color:white;
+}
+
+aside ul button {
     width:100%;
-    padding:1%;
+    text-align:left;
+    padding:3%;
+    border-radius:5px;
+    background-color:white;
+    border: 1px solid rgb(211,211,211);
+    color:rgb(128,128,128);
+    font-weight:100;
 }
 
+/* --------------------------------------------- */
+/* ------------ current day styles ------------- */
+/* --------------------------------------------- */
 
-h1 {
-    margin:0px auto;
+#todayWeather {
+    border: 1px solid rgb(211,211,211);
+    border-radius:10px;
+    padding: 5%;
+    margin-bottom: 5%;
+    margin-top: 3%;
 }
+
+.todayHeader {
+    display:block;
+    margin-bottom:3%;
+}
+
+/* --------------------------------------------- */
+/* ---------- 5-day forecast styles ------------ */
+/* --------------------------------------------- */
+
+.forecastDay {
+    padding-top:3%;
+    padding-bottom:2%;
+    text-align:center;
+}
+
+.forecastDay h3 {
+    font-size:1.2em;
+    font-weight:600;
+}
+
+.forecastDay img {
+    width:50%;
+}
+
+#forecastHeader {
+    margin-bottom:2%;
+}
+

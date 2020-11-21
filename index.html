@@ -19,7 +19,7 @@
     </div>
 
     <div class="row main-row">
-        <aside class="col-md-4">
+        <aside class="col-md-3">
             <label for="enterCity">Search for a city:</label>
 
             <div class="input-group mb-3" id="enterCity">
@@ -27,10 +27,12 @@
                 <input type="text" class="form-control" aria-label="City Name" id="searchBar">
 
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="searchBtn">Search</button>
+                  <button class="btn btn-outline-secondary cityBtn" type="button" id="searchBtn">Search</button>
                 </div>
 
             </div>
+
+            <p id="error"></p>
 
             <ul id="searchedCities"> 
 
@@ -38,11 +40,11 @@
 
         </aside>
 
-        <div class="col-md-8">
-            <section class="row d-block" id="today">
+        <div class="col-md-9 weather-information">
+            <section class="row d-block" id="todayWeather">
                 <span class="todayHeader">
-                    <h2 class="d-inline"><span id="todayCity"></span> (<span id="todayDate">08/21/1996</span>)</h2>
-                    <img src="./assets/sunny.png" alt="sun" id="todayImg" />
+                    <h2 class="d-inline"><span id="todayCity"></span> (<span id="todayDate"></span>)</h2>
+                    <img src="" alt="weather icon" id="todayImg" />
                 </span>
                 <p>Temperature: <span id="todayTemp"></span>&#176;F</p>
                 <p>Humidity: <span id="todayHumidity"></span>%</p>
@@ -50,38 +52,38 @@
                 <p>UV Index: <span id="todayUV"></span></p>
             </section>
             <section class="row">
-                <h2>5 Day Forecast</h2>
+                <h2 id="forecastHeader">5 Day Forecast</h2>
             </section>
-            <section class="row justify-content-between">
-                <div class="forecastDay col-md-2">
-                    <h3 class="futureDate">9/21/98</h3>
-                    <img src="./assets/sunny.png" alt="sun" class="futureImg" />
-                    <p>Temp: <span></span>&#176;</p>
-                    <p>Humidity: <span> </span>%</p>
+            <section class="row justify-content-around">
+                <div class="forecastDay col-md-2" id="day-1">
+                    <h3 class="futureDate"></h3>
+                    <img src="" alt="weather icon" class="futureImg" />
+                    <p>Temp: <span class="futureTemp"></span>&#176;F</p>
+                    <p>Humidity: <span class="futureHumidity"> </span>%</p>
                 </div>
-                <div class="forecastDay col-md-2">
-                    <h3 class="futureDate">9/21/98</h3>
-                    <img src="./assets/sunny.png" alt="sun" class="futureImg" />
-                    <p>Temp: <span></span>&#176;</p>
-                    <p>Humidity: <span> </span>%</p>
+                <div class="forecastDay col-md-2" id="day-2">
+                    <h3 class="futureDate"></h3>
+                    <img src="" alt="weather icon" class="futureImg" />
+                    <p>Temp: <span class="futureTemp"></span>&#176;F</p>
+                    <p>Humidity: <span class="futureHumidity"> </span>%</p>
                 </div>
-                <div class="forecastDay col-md-2">
-                    <h3 class="futureDate">9/21/98</h3>
-                    <img src="./assets/sunny.png" alt="sun" class="futureImg" />
-                    <p>Temp: <span></span>&#176;</p>
-                    <p>Humidity: <span> </span>%</p>
+                <div class="forecastDay col-md-2" id="day-3">
+                    <h3 class="futureDate"></h3>
+                    <img src="" alt="weather icon" class="futureImg" />
+                    <p>Temp: <span class="futureTemp"></span>&#176;F</p>
+                    <p>Humidity: <span class="futureHumidity"> </span>%</p>
                 </div>
-                <div class="forecastDay col-md-2">
-                    <h3 class="futureDate">9/21/98</h3>
-                    <img src="./assets/sunny.png" alt="sun" class="futureImg" />
-                    <p>Temp: <span></span>&#176;</p>
-                    <p>Humidity: <span> </span>%</p>
+                <div class="forecastDay col-md-2" id="day-4">
+                    <h3 class="futureDate"></h3>
+                    <img src="" alt="weather icon" class="futureImg" />
+                    <p>Temp: <span class="futureTemp"></span>&#176;F</p>
+                    <p>Humidity: <span class="futureHumidity"> </span>%</p>
                 </div>
-                <div class="forecastDay col-md-2">
-                    <h3 class="futureDate">9/21/98</h3>
-                    <img src="./assets/sunny.png" alt="sun" class="futureImg" />
-                    <p>Temp: <span></span>&#176;</p>
-                    <p>Humidity: <span> </span>%</p>
+                <div class="forecastDay col-md-2" id="day-5">
+                    <h3 class="futureDate"></h3>
+                    <img src="" alt="weather icon" class="futureImg" />
+                    <p>Temp: <span class="futureTemp"></span>&#176;F</p>
+                    <p>Humidity: <span class="futureHumidity"> </span>%</p>
                 </div>
             </section>
         </div>
