@@ -64,7 +64,7 @@ Upon page load, or whenever the web application is being used, if the user has a
 If the user ever wishes to clear their history, a clear history button appears whenever there is at least one item in the user's history. This button, on trigger of the onclick function, will remove the local storage/variable array of cities, clear the displayed user history list, and hide the clear history button (until a new city is added again)!
 
 
-### Possible Errors
+### Error Messages for the User
 ![web application errors](https://github.com/thelbaumann/weatherDashboard/blob/main/Assets/screen_4.png)
 
 There are a few error messages that can appear under the search field for the user if something happens.
