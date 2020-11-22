@@ -51,7 +51,7 @@ $(document).ready(function() {
 
 
 
-// if pressing enter, trigger search button
+// if pressing enter, trigger on click functions
 
 $("body").keypress(function(e){
     if (e.which == 13) {
@@ -68,82 +68,94 @@ $("body").on('click', function(event) {
 
     if ($(event.target).hasClass("cityBtn")) {
 
-    // if the search input has no user input when a button is clicked, check for conditionals
+        // if the search input has no user input when a button is clicked, check for conditionals
 
-    if ($("#searchBar").val() == "") {
+        if ($("#searchBar").val() == "") {
 
-        // if the search input is empty, and the user clicked the search button, give an error
+            // if the search input is empty, and the user clicked the search button, give an error
 
-        if ($(event.target).attr("value") == undefined) {
-            $("#error").text("You need to enter a city!");
-            return;
-        }
-        
-        // if the search input is empty, and the user clicked on a previously entered city in the history, load that city
-            // but do not re-add it to the array or to the list.
-
-        else {
-            $("#error").text("");
-            city = $(event.target).attr("value");
-            pullCityCoord();
-        }
-    }
-
-    else {
-
-        $("#error").text("");
-
-        city = $("#searchBar").val();
-
-        // capitalize every word of the city, even if the user didn't input it that way
-            // reduces it displaying in lowercase on the page, and also slipping by the if statements looking for duplicates
-
-        var capitalize = (phrase) => {
-            return phrase
-              .toLowerCase()
-              .split(' ')
-              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-              .join(' ');
-          };
-          
-        city = capitalize(city);
-
-        // make sure if a city is entered, it hasn't already been entered before, after the input has been homogenized
-
-        for (i=0; i<citiesSearched.length; i++) {
-            if (citiesSearched[i] == city) {
-                $("#error").text("You've already added this city to the list!");
+            if ($(event.target).attr("value") == undefined) {
+                $("#error").text("You need to enter a city!");
                 return;
+            }
+            
+            // if the search input is empty, and the user clicked on a previously entered city in the history, load that city
+                // but do not re-add it to the array or to the list.
+
+            else {
+                $("#error").text("");
+                city = $(event.target).attr("value");
+                pullCityCoord();
             }
         }
 
-        // create a list item containing a button with the text and value of the city inputed
-                // append this button to the user history list underneath the search input
+        else {
 
-        var cityItemLi = $("<li>");
+            // confirm that on input, the user hits the search button and not the other buttons
 
-        var cityItemBtn = $("<button>");
+            if ($(event.target).is("#searchBtn")) {
 
-        cityItemBtn.text(city);
-        cityItemBtn.attr("value", city);
-        cityItemBtn.attr("class", "cityBtn");
+                $("#error").text("");
 
-        cityItemLi.append(cityItemBtn);
+                city = $("#searchBar").val();
 
-        $("#searchedCities").append(cityItemLi);
+                // capitalize every word of the city, even if the user didn't input it that way
+                    // reduces it displaying in lowercase on the page, and also slipping by the if statements looking for duplicates
 
-        $("#searchBar").val("");
+                var capitalize = (phrase) => {
+                    return phrase
+                    .toLowerCase()
+                    .split(' ')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ');
+                };
+                
+                city = capitalize(city);
 
-        citiesSearched.push(city);
-        localStorage.setItem("cities", JSON.stringify(citiesSearched));
+                // make sure if a city is entered, it hasn't already been entered before, after the input has been homogenized
 
-        // update variable array and local storage array to both include the new city
+                for (i=0; i<citiesSearched.length; i++) {
+                    if (citiesSearched[i] == city) {
+                        $("#error").text("You've already added this city to the list!");
+                        return;
+                    }
+                }
 
-        $("#clearResults").css("display", "block");
+                // create a list item containing a button with the text and value of the city inputed
+                        // append this button to the user history list underneath the search input
 
-        pullCityCoord();
+                var cityItemLi = $("<li>");
 
-    }
+                var cityItemBtn = $("<button>");
+
+                cityItemBtn.text(city);
+                cityItemBtn.attr("value", city);
+                cityItemBtn.attr("class", "cityBtn");
+
+                cityItemLi.append(cityItemBtn);
+
+                $("#searchedCities").append(cityItemLi);
+
+                $("#searchBar").val("");
+
+                citiesSearched.push(city);
+                localStorage.setItem("cities", JSON.stringify(citiesSearched));
+
+                // update variable array and local storage array to both include the new city
+
+                $("#clearResults").css("display", "block");
+
+                pullCityCoord();
+
+            }
+
+            else {
+                $("#error").text("Please click the search button to search for a new city!");
+            }
+
+        
+
+        }
 
     }
 
@@ -155,7 +167,12 @@ function pullCityCoord() {
 
     $.ajax({
         url: "https://api.openweathermap.org/data/2.5/weather?q=" + city +"&appid=" + apiKey,
-        method: "GET"
+        method: "GET",
+        statusCode: {
+            404: function() {
+                $("#error").text("Can't locate city! Please double check spelling!");
+            }
+        }
     }).then(function(response) {
         cityLon = response.coord.lon;
         cityLat = response.coord.lat;
