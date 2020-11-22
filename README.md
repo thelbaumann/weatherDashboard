@@ -47,7 +47,7 @@ THEN I am presented with the last searched city forecast
 
 When you first load the weather dashboard, it presents you with a search field and your history of previously searched cities, if you have one. No weather information is available upon load until a city is entered or chosen from the history. When a button is clicked on the page, it begins a large function with many conditionals to fulfill all of the user scenarios. First, it validates that what the user clicked was a button. If it was, it validates if the search field is empty. 
 
-IF there is text in the search field, and it was the search button that was pushed, it pulls the user input of the search field. It then standardizes the user input by formatting the input to capitalize all of the words. This homogenization allows a for loop to run easily to recognize duplicates in the list of cities. Entering a city that already exists in the user history will result in an error displayed to the user. It will not be added a second time. If it has not been added, it creates a button displaying the city name, assigns it a value attribute of the same name, and appends that button to a list item. That list item is then appended to the user history list below the search bar. The city name is then inserted it into a url and uses an ajax call to the OpenWeather API to get the latitude/longitude of the given city. This first ajax calls leads to another, which uses those longitude/latitude values to pull the rest of the weather information for the page.
+IF there is text in the search field, and it was the search button that was pushed, it pulls the user input of the search field. It then standardizes the user input by formatting the input to capitalize all of the words. This homogenization allows a for loop to run easily to recognize duplicates in the list of cities. Entering a city that already exists in the user history will result in an error displayed to the user. It will not be added a second time. If it has not been added, it creates a button displaying the city name, assigns it a value attribute of the same name, and appends that button to a list item. That list item is then appended to the user history list below the search bar. The city name is then inserted into a url and uses an ajax call to the OpenWeather API to get the latitude/longitude of the given city. This first ajax calls leads to another, which uses those longitude/latitude values to pull the rest of the weather information for the page.
 
 IF the search field was empty, it checks to see which button was pushed. If the search button was pushed for an empty search field, it displays an error to the user. If the search field is blank, but the user selected a button from their own user history, it loads the city that the user selected.
 
@@ -61,7 +61,7 @@ Upon page load, or whenever the web application is being used, if the user has a
 ### Clearing the user history
 ![clearing user history on the web application](https://github.com/thelbaumann/weatherDashboard/blob/main/Assets/screen_3.png)
 
-If the user ever wishes to clear their history, a clear history button appears whenever there is at least one item in the user's history. This button, on trigger of the onclick function, will remove the local storage/variable array of cities, clear the displayed user history list, and hide the clear history button (until a new one is added again!)
+If the user ever wishes to clear their history, a clear history button appears whenever there is at least one item in the user's history. This button, on trigger of the onclick function, will remove the local storage/variable array of cities, clear the displayed user history list, and hide the clear history button (until a new city is added again)!
 
 
 ### Possible Errors
@@ -70,8 +70,11 @@ If the user ever wishes to clear their history, a clear history button appears w
 There are a few error messages that can appear under the search field for the user if something happens.
 
 First, if the user attempts to submit a new city by clicking a button other than the search button.
+
 Secondly, if the user attempts to submit a blank search field.
+
 Thirdly, if the user tries to add the same city to the list again.
+
 Lastly, if the user enters a city that does not exist in the API.
 
 
