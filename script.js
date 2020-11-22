@@ -14,11 +14,15 @@ var weatherIconURL;
 
 var citiesSearched = [];
 
-// localStorage.removeItem("cities");
+
 
 $(document).ready(function() {
 
     citiesSearched = JSON.parse(localStorage.getItem("cities") || "[]");
+
+    if (citiesSearched.length>0) {
+        $("#clearResults").css("display", "block");
+    }
 
     for (i=0; i<citiesSearched.length; i++) {
 
@@ -56,7 +60,7 @@ $("body").on('click', function(event) {
     if ($("#searchBar").val() == "") {
 
         if ($(event.target).attr("value") == undefined) {
-            $("#error").text("You need to enter a value!");
+            $("#error").text("You need to enter a city!");
             return;
         }
 
@@ -72,6 +76,19 @@ $("body").on('click', function(event) {
         $("#error").text("");
 
         city = $("#searchBar").val();
+
+        // capitalize every word of the city, even if the user didn't input it that way
+            // reduces it displaying in lowercase on the page, and also slipping by the if statements looking for duplicates
+
+        var capitalize = (phrase) => {
+            return phrase
+              .toLowerCase()
+              .split(' ')
+              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(' ');
+          };
+          
+        city = capitalize(city);
 
         for (i=0; i<citiesSearched.length; i++) {
             if (citiesSearched[i] == city) {
@@ -96,6 +113,8 @@ $("body").on('click', function(event) {
 
         citiesSearched.push(city);
         localStorage.setItem("cities", JSON.stringify(citiesSearched));
+
+        $("#clearResults").css("display", "block");
 
         pullCityCoord();
 
@@ -143,6 +162,41 @@ function pullWeatherInfo() {
 
         $("#todayUV").text(cityUV);
 
+        if (cityUV < 3) {
+            $("#todayUV").css("background-color", "rgb(0,128,0)");
+            $("#todayUV").css("color", "white");
+            $("#todayUV").css("padding", "1%");
+            $("#todayUV").css("border-radius", "5px");
+        }
+
+        if (cityUV > 2 && cityUV < 6) {
+            $("#todayUV").css("background-color", "rgb(0,255,0)");
+            $("#todayUV").css("color", "black");
+            $("#todayUV").css("padding", "1%");
+            $("#todayUV").css("border-radius", "5px");
+        }
+
+        if (cityUV > 5 && cityUV < 8) {
+            $("#todayUV").css("background-color", "rgb(255,255,0)");
+            $("#todayUV").css("color", "black");
+            $("#todayUV").css("padding", "1%");
+            $("#todayUV").css("border-radius", "5px");
+        }
+
+        if (cityUV > 7 && cityUV < 11) {
+            $("#todayUV").css("background-color", "rgb(255,140,0)");
+            $("#todayUV").css("color", "black");
+            $("#todayUV").css("padding", "1%");
+            $("#todayUV").css("border-radius", "5px");
+        }
+
+        if (cityUV > 10) {
+            $("#todayUV").css("background-color", "rgb(255,0,0))");
+            $("#todayUV").css("color", "white");
+            $("#todayUV").css("padding", "1%");
+            $("#todayUV").css("border-radius", "5px");
+        }
+
         weatherIconURL = "http://openweathermap.org/img/wn/" + cityWeatherIcon + "@2x.png";
 
         $("#todayImg").attr("src", weatherIconURL);
@@ -165,3 +219,11 @@ function pullWeatherInfo() {
     });
 
 }
+
+
+$("#clearResults").on('click', function(event) {
+    localStorage.removeItem("cities");
+    citiesSearched = [];
+    $("#searchedCities").empty();
+    $("#clearResults").hide();
+});

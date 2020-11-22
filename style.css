@@ -91,6 +91,25 @@ aside ul button {
 }
 
 /* --------------------------------------------- */
+/* ------------ aside/search styles ------------ */
+/* --------------------------------------------- */
+
+#clearResults {
+    display:none;
+    text-decoration: underline;
+    font-size:0.75em;
+    color:blue;
+    text-align: center;
+    margin: 5% 0 5% 0;
+}
+
+#clearResults:hover {
+    cursor: pointer;
+}
+
+
+
+/* --------------------------------------------- */
 /* ---------- 5-day forecast styles ------------ */
 /* --------------------------------------------- */
 
@@ -98,6 +117,7 @@ aside ul button {
     padding-top:3%;
     padding-bottom:2%;
     text-align:center;
+    border-radius: 10px;
 }
 
 .forecastDay h3 {
@@ -113,3 +133,19 @@ aside ul button {
     margin-bottom:2%;
 }
 
+
+/* --------------------------------------------- */
+/* --------------- media queries --------------- */
+/* --------------------------------------------- */
+
+@media only screen and (max-width:767px) {
+
+    #forecastHeader {
+        margin-bottom:5%;
+    }
+    
+    .forecastDay {
+        width:47.5%;
+        margin-bottom:5%;
+    }
+}
