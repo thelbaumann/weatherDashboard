@@ -152,4 +152,11 @@ aside ul button {
         width:47.5%;
         margin-bottom:5%;
     }
+
+    .todayHeader img {
+        width:25%;
+        display:block;
+        margin:0px auto;
+    }
+    
 }
