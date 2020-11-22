@@ -1,3 +1,13 @@
+
+/* ---------------------------------------------- */
+/* ------------ general page styles ------------- */
+/* ---------------------------------------------- */
+
+body {
+    font-family:sans-serif;
+    margin-bottom:15%;
+}
+
 header {
     color:white;
     text-align:center;
@@ -14,23 +24,31 @@ h1 {
     background-color:rgba(0,0,0,0.8);
 }
 
-body {
-    font-family:sans-serif;
-}
-
-#error {
-    margin-top:5%;
-    font-size:0.75em;
-}
-
 .row.main-row {
     width:95%;
     margin:0px auto;
 }
 
-.forecastDay {
-    background-color:blue;
-    color:white;
+.weather-information {
+    visibility:hidden;
+    padding-left:5%;
+}
+
+/* --------------------------------------------- */
+/* ------------ current day styles ------------- */
+/* --------------------------------------------- */
+
+#todayWeather {
+    border: 1px solid rgb(211,211,211);
+    border-radius:10px;
+    padding: 5%;
+    margin-bottom: 5%;
+    margin-top: 3%;
+}
+
+.todayHeader {
+    display:block;
+    margin-bottom:3%;
 }
 
 .todayHeader img {
@@ -38,17 +56,21 @@ body {
     vertical-align: top;
 }
 
+/* --------------------------------------------- */
+/* ------------ aside/search styles ------------ */
+/* --------------------------------------------- */
 
-
-#searchedCities {
-    list-style-type: none;
-    margin:0;
-    padding:0;
+#clearResults {
+    display:none;
+    text-decoration: underline;
+    font-size:0.75em;
+    color:blue;
+    text-align: center;
+    margin: 5% 0 5% 0;
 }
 
-.weather-information {
-    visibility:hidden;
-    padding-left:5%;
+#clearResults:hover {
+    cursor: pointer;
 }
 
 aside {
@@ -73,38 +95,15 @@ aside ul button {
     font-weight:100;
 }
 
-/* --------------------------------------------- */
-/* ------------ current day styles ------------- */
-/* --------------------------------------------- */
-
-#todayWeather {
-    border: 1px solid rgb(211,211,211);
-    border-radius:10px;
-    padding: 5%;
-    margin-bottom: 5%;
-    margin-top: 3%;
+#searchedCities {
+    list-style-type: none;
+    margin:0;
+    padding:0;
 }
 
-.todayHeader {
-    display:block;
-    margin-bottom:3%;
-}
-
-/* --------------------------------------------- */
-/* ------------ aside/search styles ------------ */
-/* --------------------------------------------- */
-
-#clearResults {
-    display:none;
-    text-decoration: underline;
+#error {
+    margin-top:5%;
     font-size:0.75em;
-    color:blue;
-    text-align: center;
-    margin: 5% 0 5% 0;
-}
-
-#clearResults:hover {
-    cursor: pointer;
 }
 
 
@@ -131,6 +130,11 @@ aside ul button {
 
 #forecastHeader {
     margin-bottom:2%;
+}
+
+.forecastDay {
+    background-color:blue;
+    color:white;
 }
 
 
