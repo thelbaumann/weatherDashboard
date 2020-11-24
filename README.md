@@ -92,7 +92,7 @@ I used this [first thread](https://stackoverflow.com/questions/20943089/how-to-c
 
 Next, I used [another thread](https://stackoverflow.com/questions/14934317/how-to-handle-404-error-in-jquery-post) to help me display a certain error if a user would enter a city not recognized by the API.
 
-After that, I consulted [a thread on capitalization](https://api.jquery.com/find/) to help me homogenize the user input both on the back end and front end, so that different capitalization was no longer a factor in the elimination of duplicates from the list.
+After that, I consulted [a thread on capitalization](https://stackoverflow.com/questions/32589197/how-can-i-capitalize-the-first-letter-of-each-word-in-a-string-using-javascript) to help me homogenize the user input both on the back end and front end, so that different capitalization was no longer a factor in the elimination of duplicates from the list.
 
 Lastly, I pulled a code snippet from a thread on [enter buttons triggering click events](https://stackoverflow.com/questions/9146651/trigger-an-event-on-click-and-enter) to help run the same function as the search button if the user hits the enter key.
 
